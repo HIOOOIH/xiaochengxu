@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "Pages/classic/classic"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#99ccff",
+    "navigationBarTitleText": "我的第一个小程序",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "default",
+    "backgroundColor": "#99ccff",
+    "enablePullDownRefresh":true
+  }
+}
