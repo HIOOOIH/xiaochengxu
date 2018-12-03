@@ -1,1 +1,26 @@
 /* Pages/classic/classic.wxss */
+
+/* 倒序会根据容器的大小进行偏移 */
+.flex-wrp{
+  display: flex;
+  flex-direction:column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  height: 400px;
+  background-color: black;
+}
+
+.chuck{
+  width: 100px;
+  height: 100px;
+}
+
+.color1{
+  background-color: blue;
+}
+.color2{
+  background-color: orange;
+}
+.color3{
+  background-color: olivedrab;
+}

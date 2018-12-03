@@ -1,2 +1,6 @@
 <!--Pages/classic/classic.wxml-->
-<text>Pages/classic/classic.wxml</text>
+<view class="flex-wrp">
+    <view class="chuck color1">1</view>
+    <view class="chuck color2">2</view>
+    <view class="chuck color3">3</view>
+</view>
