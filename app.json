@@ -9,6 +9,6 @@
     "navigationBarTextStyle": "white",
     "navigationStyle": "default",
     "backgroundColor": "#99ccff",
-    "enablePullDownRefresh":false
+    "enablePullDownRefresh": false
   }
 }

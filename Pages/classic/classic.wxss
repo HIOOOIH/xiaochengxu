@@ -1,5 +1,5 @@
 /* Pages/classic/classic.wxss */
-.wrp{
-  width:32px;
-  height:28px;
+.wrp {
+  width: 32px;
+  height: 28px;
 }

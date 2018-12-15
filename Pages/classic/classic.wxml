@@ -1,5 +1,4 @@
 <!--Pages/classic/classic.wxml-->
-<view class="wrp">
-    <like-cmp />
-</view>
+<like-cmp bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}" />
 
+<movie-cmp img="{{classic.image}}" content="{{classic.content}}" />
