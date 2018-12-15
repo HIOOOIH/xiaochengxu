@@ -1,6 +1,5 @@
 <!--Pages/classic/classic.wxml-->
-<view class="flex-wrp">
-    <view class="chuck color1">1</view>
-    <view class="chuck color2">2</view>
-    <view class="chuck color3">3</view>
+<view class="wrp">
+    <like-cmp />
 </view>
+
