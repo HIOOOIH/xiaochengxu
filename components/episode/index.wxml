@@ -1,0 +1,21 @@
+<!--components/episode/index.wxml-->
+
+<!-- <view class="container">
+	<text >No.</text>
+	<text class="">{{_index}}</text>
+	<text >|</text>
+	<text >{{month}}</text>
+	<text >{{year}}</text>
+</view>
+ -->
+<view class="episodeContainer">
+    <view class="indexContainer">
+        <text class="plain">No.</text>
+        <text class="index">{{_index}}</text>
+        <text class="line"></text>
+    </view>
+    <view class="dateContainer">
+        <text class="month">{{month}}</text>
+        <text class="year">{{year}}</text>
+    </view>
+</view>

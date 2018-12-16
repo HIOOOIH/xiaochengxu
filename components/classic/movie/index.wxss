@@ -1,11 +1,11 @@
 /* components/classic/movie/index.wxss */
-.classicContainer{
+.movieContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.classicImg{
+.movieImg{
   width:750rpx;
   height:500rpx;
  
