@@ -2,6 +2,8 @@
   "usingComponents": {
     "like-cmp": "/components/like/index",
     "movie-cmp": "/components/classic/movie/index",
-    "episode-cmp": "/components/episode/index"
+    "essay-cmp": "/components/classic/essay/index",
+    "episode-cmp": "/components/episode/index",
+    "navi-cmp": "/components/navi/index"
   }
 }
