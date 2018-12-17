@@ -31,6 +31,28 @@ Page({
     likeModel.like(behavior, this.data.classic.id, this.data.classic.type);
   },
 
+  onNext:function(event){
+    let index = this.data.classic.index
+    classicModel.getNext(index, (res)=>{
+      this.setData({
+        classic:res,
+        latest:classicModel.isLatest(res.index),
+        first:classicModel.isFirst(res.index)
+      })
+    })
+  },
+  onPrevious:function(event){
+    let index = this.data.classic.index
+    classicModel.getPrevious(index, (res)=>{
+      this.setData({
+        classic:res,
+        latest:classicModel.isLatest(res.index),
+        first:classicModel.isFirst(res.index)
+      })
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
