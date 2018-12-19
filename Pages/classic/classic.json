@@ -3,6 +3,7 @@
     "like-cmp": "/components/like/index",
     "movie-cmp": "/components/classic/movie/index",
     "essay-cmp": "/components/classic/essay/index",
+    "music-cmp": "/components/classic/music/index",
     "episode-cmp": "/components/episode/index",
     "navi-cmp": "/components/navi/index"
   }

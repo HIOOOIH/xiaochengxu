@@ -2,7 +2,7 @@
 
 import { classicBehavior } from "../classic-beh.js";
 
-const mMgr = wx.getBackgroundAudioManager();
+let mMgr = wx.getBackgroundAudioManager();
 
 Component({
   // 通用 properties
@@ -21,17 +21,20 @@ Component({
    */
   data: {
     playing: false,
-    pauseSrc: "images/player@pause.png",
-    playSrc: "images/player@play.png"
+    waitingSrc: "images/player@waiting.png",
+    playingSrc: "images/player@playing.png"
   },
 
+  /* 微信生命周期, 组件进入界面节点树时执行 */
   attached: function(event) {
-    this._monitorSwitch();
     // only in wx:if
-    this._recoverStatus();
+    this._recoverPlaying();
     this._monitorSwitch();
   },
 
+  /* hidden 不会触发完整生命周期, 适用于频繁切换 */
+  /* wx:if 会触发完整生命周期, 不大可能改变 */
+  /* 微信生命周期, 组件退出界面节点树时执行 */
   detached: function() {
     // wx.pauseBackgroundAudio()
     // mMgr.stop()
@@ -44,46 +47,51 @@ Component({
     onPlay: function(event) {
       if (!this.data.playing) {
         this.setData({
-          palying: true
+          playing: true
         });
-        mMgr.src = this.properties.src;
+        if ((mMgr.src = this.properties.src)) {
+          mMgr.play();
+        } else {
+          mMgr.src = this.properties.src;
+        }
+        mMgr.title = this.properties.title;
       } else {
         this.setData({
-          palying: false
+          playing: false
         });
         mMgr.pause();
       }
-    }
-  },
+    },
+    _recoverPlaying: function() {
+      if (mMgr.paused) {
+        this.setData({
+          playing: false
+        });
+        return;
+      }
+      if (mMgr.src == this.properties.src) {
+        if (!mMgr.paused) {
+          this.setData({
+            playing: true
+          });
+        }
+      }
+    },
 
-  _recoverStatus: function(event) {
-    if (mMgr.paused) {
-      this.setData({
-        palying: false
+    // 播放器检测
+    _monitorSwitch: function() {
+      mMgr.onPlay(() => {
+        this._recoverPlaying();
       });
-      return;
-    }
-
-    if (mMgr.src == this.properties.src) {
-      this.setData({
-        palying: true
+      mMgr.onPause(() => {
+        this._recoverPlaying();
+      });
+      mMgr.onStop(() => {
+        this._recoverPlaying();
+      });
+      mMgr.onEnded(() => {
+        this._recoverPlaying();
       });
     }
-  },
-
-  // 播放器检测
-  _monitorSwitch: function() {
-    mMgr.onPlay(() => {
-      this._recoverStatus();
-    });
-    mMgr.onPause(() => {
-      this._recoverStatus();
-    });
-    mMgr.onStop(() => {
-      this._recoverStatus();
-    });
-    mMgr.onEnded(() => {
-      this._recoverStatus();
-    });
   }
 });
