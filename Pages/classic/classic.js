@@ -10,9 +10,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //setData会把数据放到data中以完成数据更新，所以我们先声明calssic,方便我们看清楚组件、页面中我们所使用的数据
     classic: null,
-    latest: true,
-    first: false
+    //因为我们使用getLatest方法获得的数据就是最新一期，所以我们就可以默认first为true，而latest为false
+    first: false,
+    latest: true
   },
 
   /**
@@ -26,32 +28,30 @@ Page({
     });
   },
 
+  //这个onLike是实现向服务器传递你到底点击的是喜欢还是不喜欢
   onLike: function(event) {
     let behavior = event.detail.behavior;
     likeModel.like(behavior, this.data.classic.id, this.data.classic.type);
   },
 
-  onNext:function(event){
-    let index = this.data.classic.index
-    classicModel.getNext(index, (res)=>{
-      this.setData({
-        classic:res,
-        latest:classicModel.isLatest(res.index),
-        first:classicModel.isFirst(res.index)
-      })
-    })
-  },
-  onPrevious:function(event){
-    let index = this.data.classic.index
-    classicModel.getPrevious(index, (res)=>{
-      this.setData({
-        classic:res,
-        latest:classicModel.isLatest(res.index),
-        first:classicModel.isFirst(res.index)
-      })
-    })
+  onPrevious: function(event) {
+    this._updateClassic("previous");
   },
 
+  onNext: function(event) {
+    this._updateClassic("next");
+  },
+
+  _updateClassic: function(nextOrPrevious) {
+    let index = this.data.classic.index;
+    classicModel.getClassic(index, nextOrPrevious, res => {
+      this.setData({
+        classic: res,
+        latest: classicModel.isLatest(res.index),
+        first: classicModel.isFirst(res.index)
+      });
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
