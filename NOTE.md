@@ -17,3 +17,11 @@
 + align-items
   + baseline: 以第一个文字底线（基线）为基准，后续的文字底线（基线）以它对齐
   + strech:没有高度的时候自动撑满容器
+
+>保存状态:
+  + promise 对象
+    + promise 状态: pending(进行中) fulfilled(成功) rejected(失败)
+    + success：pending(进行中) => fulfilled(成功 => 凝固)
+    + fail:pending(进行中) => rejected(失败 => 凝固)
+    + then(): 异步执行后的结果
+  + 闭包函数

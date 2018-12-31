@@ -1,2 +1,22 @@
 <!--pages/book/book.wxml-->
-<text>pages/book/book.wxml</text>
+<view>
+  <view class="bookContainer" wx:if="{{!searchPanel}}">
+    <view class="header">
+      <view class="box" bind:tap="onActivateSearch">
+        <image src="/images/icon/search.png" />
+        <text>搜索书籍</text>
+      </view>
+    </view>
+    <view class="mainContainer">
+      <image class="head-img" src="/images/book/quality.png" />
+      <view class="bookLists">
+        <!-- wx:for-item: 修改 item 为自定义别名, 默认为 item -->
+        <!-- block: 包裹循环标签 -->
+        <block wx:for="{{books}}" wx:key="id" wx:for-item="itemName">
+          <book-cmp class="book" book="{{itemName}}" />
+        </block>
+      </view>
+    </view>
+  </view>
+  <search-cmp more="{{more}}" wx:if="{{searchPanel}}" bind:cancel="onCancel" />
+</view>
