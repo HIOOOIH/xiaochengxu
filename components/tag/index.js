@@ -1,4 +1,4 @@
-// components/index.js
+// components/tag/index.js
 Component({
   // 启用多 slot 支持
   options:{

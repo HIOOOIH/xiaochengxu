@@ -1,4 +1,4 @@
-/* components/index.wxss */
+/* components/tag/index.wxss */
 
 .tagContainer{
   padding:4rpx 12rpx; 

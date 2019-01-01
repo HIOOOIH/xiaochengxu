@@ -45,11 +45,11 @@ Component({
    */
   methods: {
     // 关闭搜索
-    onCancel() {
+    onCancel(event) {
       this.triggerEvent("cancel", {}, {});
     },
     // 点击或回车后行为
-    onConfirm() {
+    onConfirm(event) {
       this.setData({
         searching: true
       });
@@ -71,7 +71,7 @@ Component({
     },
 
     // 清空搜索
-    onDelete() {
+    onDelete(event) {
       this.setData({
         searching: false,
         dataArray: [],
