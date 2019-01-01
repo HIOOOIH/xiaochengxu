@@ -18,7 +18,7 @@ class BookModel extends HTTP {
   // 书籍详情
   getDetail(bind) {
     return this.request({
-      url: `book/${bid}/favor`
+      url: `book/${bid}/detail`
     });
   }
 
